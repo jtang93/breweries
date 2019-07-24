@@ -18,7 +18,22 @@ export default class Main extends React.Component {
     .then(r => r.json())
     .then(parsed => {
       this.setState({allBreweries: parsed})
+      console.log(parsed)
     })
+  }
+
+  renderDetails = () => {
+    if (this.state.selectedBrewery) {
+      return(
+        <Details selectedBrewery={this.state.selectedBrewery}></Details>
+      )
+    }
+  }
+
+  selectBrewery = (breweryID) => {
+    let clickedBrewery = this.state.allBreweries.find(brewery => brewery.id==breweryID)
+    this.setState({selectedBrewery: clickedBrewery})
+    console.log(this.state.selectedBrewery)
   }
 
   render() {
@@ -26,8 +41,8 @@ export default class Main extends React.Component {
       <div>
         <TopSearch></TopSearch>
         <div>
-          <List ></List>
-          <Details></Details>
+          <List allBreweries={this.state.allBreweries} selectBrewery={this.selectBrewery}></List>
+          {this.renderDetails()}
         </div>
       </div>
     )
