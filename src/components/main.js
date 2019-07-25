@@ -7,10 +7,11 @@ import Details from './details.js'
 export default class Main extends React.Component {
 
   state = {
-    city: null,
+    filterCity: null,
     breweries: [],
     selectedBrewery: null,
-    allBreweries: []
+    allBreweries: [],
+    filteredBreweries: []
   }
 
   componentDidMount() {
@@ -18,8 +19,18 @@ export default class Main extends React.Component {
     .then(r => r.json())
     .then(parsed => {
       this.setState({allBreweries: parsed})
+      this.setState({filteredBreweries: parsed})
       console.log(parsed)
     })
+  }
+
+  citySearch = (city) => {
+    this.setState({filterCity: city})
+  }
+
+  submitCity = () => {
+    let filtered = this.state.allBreweries.filter(brewery => brewery.city == this.state.filterCity)
+    this.setState({filteredBreweries: filtered})
   }
 
   renderDetails = () => {
@@ -39,9 +50,9 @@ export default class Main extends React.Component {
   render() {
     return(
       <div>
-        <TopSearch></TopSearch>
+        <TopSearch citySearch={this.citySearch} submitCity={this.submitCity}></TopSearch>
         <div>
-          <List allBreweries={this.state.allBreweries} selectBrewery={this.selectBrewery}></List>
+          <List filteredBreweries={this.state.filteredBreweries} selectBrewery={this.selectBrewery}></List>
           {this.renderDetails()}
         </div>
       </div>

@@ -12,7 +12,7 @@ export default class List extends React.Component {
   }
 
   listBreweries = () => {
-    let breweryCards = this.props.allBreweries.map(brewery =>
+    let breweryCards = this.props.filteredBreweries.map(brewery =>
       <div className='breweryCard' id={brewery.id} key={brewery.id} onClick={this.clickHandler}>
         Name: {brewery.name}
         <br></br>
@@ -23,7 +23,6 @@ export default class List extends React.Component {
         Website: <a href={brewery.website_url}>{brewery.website_url}</a>
       </div>
     )
-    console.log(breweryCards)
     return(
       <div className='breweryCardsDiv'>
         {breweryCards}
