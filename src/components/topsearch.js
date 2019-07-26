@@ -11,13 +11,21 @@ export default class TopSearch extends React.Component{
     this.props.submitCity()
   }
 
+  resetHandler = (e) => {
+    this.props.resetFilter()
+  }
+
   render() {
     return (
-      <div>
+      <div className='topsearchDiv container'>
+        <span>
+          Brewery Finder
+        </span>
         <form onSubmit={this.submitHandler}>
           <input type='text' placeholder='Enter a city' onChange={this.typeCity}></input>
           <input type='submit'></input>
         </form>
+        <button onClick={this.resetHandler}>Reset Filter</button>
       </div>
     )
   }

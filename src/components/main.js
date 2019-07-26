@@ -27,12 +27,14 @@ export default class Main extends React.Component {
   citySearch = (city) => {
     this.setState({filterCity: city})
   }
-
   submitCity = () => {
     let filtered = this.state.allBreweries.filter(brewery => brewery.city == this.state.filterCity)
     this.setState({filteredBreweries: filtered})
   }
-
+  resetFilter = () => {
+    let breweries = this.state.allBreweries
+    this.setState({filteredBreweries: breweries})
+  }
   renderDetails = () => {
     if (this.state.selectedBrewery) {
       return(
@@ -40,7 +42,6 @@ export default class Main extends React.Component {
       )
     }
   }
-
   selectBrewery = (breweryID) => {
     let clickedBrewery = this.state.allBreweries.find(brewery => brewery.id==breweryID)
     this.setState({selectedBrewery: clickedBrewery})
@@ -49,11 +50,18 @@ export default class Main extends React.Component {
 
   render() {
     return(
-      <div>
-        <TopSearch citySearch={this.citySearch} submitCity={this.submitCity}></TopSearch>
-        <div>
-          <List filteredBreweries={this.state.filteredBreweries} selectBrewery={this.selectBrewery}></List>
-          {this.renderDetails()}
+      <div className='bodyDiv container'>
+        <TopSearch citySearch={this.citySearch} submitCity={this.submitCity} resetFilter={this.resetFilter}></TopSearch>
+        <div className='contentDiv container'>
+          <div className='listDiv container'>
+            <List filteredBreweries={this.state.filteredBreweries} selectBrewery={this.selectBrewery}></List>
+          </div>
+          <div className='detailsDiv container'>
+            <span>
+              Brewery Details
+            </span>
+            {this.renderDetails()}
+          </div>
         </div>
       </div>
     )
