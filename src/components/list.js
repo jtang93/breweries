@@ -23,6 +23,9 @@ export default class List extends React.Component {
         <span>
           Address: {brewery.street}
         </span>
+        <span className='addrLine2'>
+          {brewery.city}, {brewery.state}, {brewery.postal_code.slice(0,5)}
+        </span>
         <span>
           Website: <a href={brewery.website_url}>{brewery.website_url}</a>
         </span>
