@@ -14,13 +14,18 @@ export default class List extends React.Component {
   listBreweries = () => {
     let breweryCards = this.props.filteredBreweries.map(brewery =>
       <div className='breweryCard' id={brewery.id} key={brewery.id} onClick={this.clickHandler}>
-        Name: {brewery.name}
-        <br></br>
-        Type: {brewery.brewery_type}
-        <br></br>
-        Address: {brewery.street}
-        <br></br>
-        Website: <a href={brewery.website_url}>{brewery.website_url}</a>
+        <span>
+          Name: {brewery.name}
+        </span>
+        <span>
+          Type: {brewery.brewery_type}
+        </span>
+        <span>
+          Address: {brewery.street}
+        </span>
+        <span>
+          Website: <a href={brewery.website_url}>{brewery.website_url}</a>
+        </span>
       </div>
     )
     return(
@@ -32,9 +37,12 @@ export default class List extends React.Component {
 
   render() {
     return(
-      <div>
+      <React.Fragment>
+        <span>
+          Brewery List
+        </span>
         {this.listBreweries()}
-      </div>
+      </React.Fragment>
     )
   }
 

@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather:300|Raleway');
+
+body{
+  font-family: 'Raleway', sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -30,4 +36,59 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.container{
+  display: flex;
+}
+
+.bodyDiv{
+  flex-direction: column;
+  align-items: start;
+}
+
+.topsearchDiv{
+  width: 100vw;
+  height: 10vh;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.contentDiv{
+  margin-top: calc(10vh + 40px);
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  width: 100vw;
+}
+
+.listDiv{
+  max-height: calc(100vh - (10vh + 40px));
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  width: 50vw;
+}
+
+.breweryCard{
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.detailsDiv{
+  flex-direction: column;
+  align-items: center;
+  width: 50vw;
+}
+
+.mapboxDiv{
+  margin-top: 10px;
 }

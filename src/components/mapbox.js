@@ -17,8 +17,8 @@ export default class Mapbox extends Component {
         <Map
           style="mapbox://styles/mapbox/streets-v9"
           containerStyle={{
-            height: "200px",
-            width: "200px"
+            height: "30vw",
+            width: "30vw"
           }}
           center={[this.props.selectedBrewery.longitude, this.props.selectedBrewery.latitude]}
           >
