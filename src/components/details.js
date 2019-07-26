@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
+import Mapbox from './mapbox.js'
 
-export default class Details extends React.Component {
+const Details = ({match, selectedBrewery})=> {
 
-  render() {
     return(
       <div className='detailsDiv'>
-        Name: {this.props.selectedBrewery.name}
+        Name: {selectedBrewery.name}
         <br></br>
         Address: {this.props.selectedBrewery.street}
         <br></br>
         Coordinates: {this.props.selectedBrewery.latitude},{this.props.selectedBrewery.longitude}
+        <Mapbox selectedBrewery={this.props.selectedBrewery}></Mapbox>
       </div>
     )
-  }
 
 }
+
+export default Details

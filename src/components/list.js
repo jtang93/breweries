@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 
-export default class List extends React.Component {
+export default class List extends Component {
 
   state = {
     city: null
@@ -21,6 +22,13 @@ export default class List extends React.Component {
         Address: {brewery.street}
         <br></br>
         Website: <a href={brewery.website_url}>{brewery.website_url}</a>
+        <br></br>
+        <Link to={{
+            pathname:`/details/${brewery.id}`,
+            state:{
+              selectedBrewery:this.props.selectedBrewery
+            }
+          }}>Details</Link>
       </div>
     )
     return(
